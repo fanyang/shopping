@@ -2,13 +2,13 @@ package itat.zttc.shop.dao;
 
 import itat.zttc.shop.util.PropertiesUtil;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class PropertiesFactory implements IFactoryDao {
 	private static PropertiesFactory f = new PropertiesFactory();
-	private static Map<String,Object> daos = new ConcurrentHashMap<String, Object>();
+	private static Map<String,Object> daos = new HashMap<String, Object>();
 	private PropertiesFactory() {	}
 	public static IFactoryDao getInstance() {
 		return f;
@@ -18,12 +18,17 @@ public class PropertiesFactory implements IFactoryDao {
 		try {
 			if(daos.containsKey(name)){
 				return daos.get(name);
+			} else {
+				synchronized (this) {
+					if(daos.containsKey(name)) return daos.get(name);
+					Properties prop = PropertiesUtil.getDaoProp();
+					String cn = prop.getProperty(name);
+					Object obj = Class.forName(cn).newInstance();
+					daos.put(name, obj);
+					return obj;
+				}
 			}
-			Properties prop = PropertiesUtil.getDaoProp();
-			String cn = prop.getProperty(name);
-			Object obj = Class.forName(cn).newInstance();
-			daos.put(name, obj);
-			return obj;
+			
 		} catch (InstantiationException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {

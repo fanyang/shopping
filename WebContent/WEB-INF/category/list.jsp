@@ -41,6 +41,5 @@ a.category_link:hover {
 	<a href="category.do?method=show&id=${category.id }" class="category_link"><span class="category">${category.name }</span></a>
 </c:forEach>
 </c:if>
-</p>
 </body>
 </html>

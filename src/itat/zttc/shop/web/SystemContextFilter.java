@@ -1,7 +1,6 @@
 package itat.zttc.shop.web;
 
 import itat.zttc.shop.model.SystemContext;
-import itat.zttc.shop.util.RequestUtil;
 
 import java.io.IOException;
 
@@ -13,6 +12,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 public class SystemContextFilter implements Filter {
+	
+	private int pageSize;
 
 	@Override
 	public void destroy() {
@@ -35,19 +36,18 @@ public class SystemContextFilter implements Filter {
 			SystemContext.setSort(sort);
 			SystemContext.setPageOffset(pageOffset);
 			SystemContext.setPageSize(pageSize);
-			SystemContext.setRealpath(RequestUtil.PATH);
 			chain.doFilter(req, resp);
 		} finally {
 			SystemContext.removePageOffset();
-			SystemContext.removePageSize();
 			SystemContext.removeOrder();
 			SystemContext.removeSort();
 		}
 	}
 
 	@Override
-	public void init(FilterConfig arg0) throws ServletException {
-
+	public void init(FilterConfig conf) throws ServletException {
+		pageSize = Integer.parseInt(conf.getInitParameter("pageSize"));
+		if (pageSize == 0) pageSize = 15;
 	}
 
 }

@@ -46,7 +46,7 @@ public class ProductDao extends BaseDao<Product> implements IProductDao {
 		String img = p.getImg();
 		super.delete(Product.class, id);
 		//删除图片
-		String path = SystemContext.getRealpath()+"/img/";
+		String path = SystemContext.PATH+"/img/";
 		File f = new File(path+img);
 		f.delete();
 	}

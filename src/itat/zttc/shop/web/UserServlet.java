@@ -56,7 +56,7 @@ public class UserServlet extends BaseServlet {
 	}
 	
 	public String update(HttpServletRequest req,HttpServletResponse resp) {
-		User tu = (User)RequestUtil.setParam(User.class, req);
+		User tu = RequestUtil.setParam(User.class, req);
 		boolean isValidate = RequestUtil.validate(User.class, req);
 		int id = Integer.parseInt(req.getParameter("id"));
 		User user = userDao.load(id);
@@ -72,7 +72,7 @@ public class UserServlet extends BaseServlet {
 	}
 	@Auth("any")
 	public String add(HttpServletRequest req,HttpServletResponse resp) {
-		User u = (User)RequestUtil.setParam(User.class,req);
+		User u = RequestUtil.setParam(User.class,req);
 		boolean isValidate = RequestUtil.validate(User.class, req);
 		if(!isValidate) {
 			return "user/addInput.jsp";
@@ -119,7 +119,7 @@ public class UserServlet extends BaseServlet {
 	
 	@Auth
 	public String updateSelf(HttpServletRequest req,HttpServletResponse resp) {
-		User tu = (User)RequestUtil.setParam(User.class, req);
+		User tu = RequestUtil.setParam(User.class, req);
 		boolean isValidate = RequestUtil.validate(User.class, req);
 		User user = (User)req.getSession().getAttribute("loginUser");
 		user.setPassword(tu.getPassword());

@@ -43,7 +43,7 @@ public class CategoryServlet extends BaseServlet {
 	
 	public String update(HttpServletRequest req,HttpServletResponse resp) {
 		Category category = categoryDao.load(Integer.parseInt(req.getParameter("id")));
-		Category tc = (Category)RequestUtil.setParam(Category.class, req);
+		Category tc = RequestUtil.setParam(Category.class, req);
 		category.setName(tc.getName());
 		if(!RequestUtil.validate(Category.class, req)) {
 			return "category/updateInput.jsp";
@@ -53,7 +53,7 @@ public class CategoryServlet extends BaseServlet {
 	}
 	
 	public String add(HttpServletRequest req,HttpServletResponse resp) {
-		Category category = (Category)RequestUtil.setParam(Category.class, req);
+		Category category = RequestUtil.setParam(Category.class, req);
 		if(!RequestUtil.validate(Category.class, req)) {
 			return "category/addInput.jsp";
 		}

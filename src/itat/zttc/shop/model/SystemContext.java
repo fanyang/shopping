@@ -1,13 +1,12 @@
 package itat.zttc.shop.model;
 
 public class SystemContext {
-	private static ThreadLocal<Integer> pageSize = new ThreadLocal<Integer>();
-	private static ThreadLocal<Integer> pageIndex = new ThreadLocal<Integer>();
+	private static int pageSize;
 	private static ThreadLocal<Integer> pageOffset = new ThreadLocal<Integer>();
 	/**
-	 * 真实路径
+	 * 项目web路径
 	 */
-	private static ThreadLocal<String> realpath = new ThreadLocal<String>();
+	public final static String PATH = "D:\\webapps\\shop\\WebContent";
 	/**
 	 * 升序还是降序
 	 */
@@ -16,19 +15,7 @@ public class SystemContext {
 	 * 根据那个字段排序
 	 */
 	private static ThreadLocal<String> sort = new ThreadLocal<String>();
-	
-	
-	public static String getRealpath() {
-		return realpath.get();
-	}
 
-	public static void setRealpath(String _realpath) {
-		realpath.set(_realpath);
-	}
-	
-	public static void removeRealPath() {
-		realpath.remove();
-	}
 
 	public static String getOrder() {
 		return order.get();
@@ -67,26 +54,12 @@ public class SystemContext {
 	}
 
 	public static void setPageSize(int _pageSize) {
-		pageSize.set(_pageSize);
+		pageSize = _pageSize;
 	}
 	
 	public static int getPageSize() {
-		return pageSize.get();
+		return pageSize;
 	}
 	
-	public static void removePageSize() {
-		pageSize.remove();
-	}
-	
-	public static void setPageIndex(int _pageIndex) {
-		pageIndex.set(_pageIndex);
-	}
-	
-	public static int getPageIndex() {
-		return pageIndex.get();
-	}
-	
-	public static void removePageIndex() {
-		pageIndex.remove();
-	}
+
 }

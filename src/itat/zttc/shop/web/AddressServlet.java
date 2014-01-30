@@ -29,7 +29,7 @@ public class AddressServlet extends BaseServlet {
 	@Auth
 	public String add(HttpServletRequest req,HttpServletResponse resp) {
 		User u = userDao.load(Integer.parseInt(req.getParameter("userId")));
-		Address a = (Address)RequestUtil.setParam(Address.class, req);
+		Address a = RequestUtil.setParam(Address.class, req);
 		if(!RequestUtil.validate(Address.class, req)) {
 			req.setAttribute("user",u);
 			return "address/addInput.jsp";
@@ -63,7 +63,7 @@ public class AddressServlet extends BaseServlet {
 	@Auth
 	public String update(HttpServletRequest req,HttpServletResponse resp) {
 		Address address = addressDao.load(Integer.parseInt(req.getParameter("id")));
-		Address ta = (Address)RequestUtil.setParam(Address.class, req);
+		Address ta = RequestUtil.setParam(Address.class, req);
 		address.setName(ta.getName());
 		address.setPhone(ta.getPhone());
 		address.setPostcode(ta.getPostcode());

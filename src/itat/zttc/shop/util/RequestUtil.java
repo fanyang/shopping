@@ -1,5 +1,6 @@
 package itat.zttc.shop.util;
 
+import itat.zttc.shop.model.SystemContext;
 import itat.zttc.shop.model.ValidateForm;
 import itat.zttc.shop.model.ValidateType;
 
@@ -19,8 +20,6 @@ import org.apache.commons.io.FilenameUtils;
 public class RequestUtil {
 	public final static String[] allowFile = {"jpg","bmp","gif","png"};
 	
-	public final static String PATH = "D:\\webapps\\shop\\WebContent";
-	
 	@SuppressWarnings("unchecked")
 	public static void uploadFile(String fname, String fieldName,byte[] fs,HttpServletRequest req) throws FileNotFoundException, IOException {
 		FileOutputStream fos = null;
@@ -31,7 +30,7 @@ public class RequestUtil {
 				System.out.println(ext);
 				boolean b =  checkFile(ext);
 				if(b) {
-					fos = new FileOutputStream(PATH+"/img/"+fn);
+					fos = new FileOutputStream(SystemContext.PATH+"/img/"+fn);
 					fos.write(fs, 0, fs.length);
 				} else {
 					Map<String,String> errors = (Map<String,String>)req.getAttribute("errors");
@@ -115,10 +114,10 @@ public class RequestUtil {
 		return true;
 	}
 	
-	public static Object setParam(Class<?> clz,HttpServletRequest req) {
+	public static <T> T setParam(Class<T> clz,HttpServletRequest req) {
 		Map<String,String[]> params = req.getParameterMap();
 		Set<String> keys = params.keySet();
-		Object o = null;
+		T o = null;
 		try {
 			o = clz.newInstance();
 			for(String key:keys) {

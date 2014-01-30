@@ -99,7 +99,7 @@ public class ProductServlet extends BaseServlet {
 	}
 	
 	public String add(HttpServletRequest req,HttpServletResponse resp) throws FileNotFoundException, IOException {
-		Product p = (Product)RequestUtil.setParam(Product.class, req);
+		Product p = RequestUtil.setParam(Product.class, req);
 		p.setStatus(1);
 		RequestUtil.validate(Product.class, req);
 		int cid = 0;
@@ -128,7 +128,7 @@ public class ProductServlet extends BaseServlet {
 	}
 	
 	public String update(HttpServletRequest req,HttpServletResponse resp) throws FileNotFoundException, IOException {
-		Product p = (Product)RequestUtil.setParam(Product.class, req);
+		Product p = RequestUtil.setParam(Product.class, req);
 		RequestUtil.validate(Product.class, req);
 		String img = req.getParameter("img");
 		System.out.println(img+"----------------------");
@@ -168,7 +168,7 @@ public class ProductServlet extends BaseServlet {
 		if(updateImg) {
 			//先删除原有的图片
 			String oimg = tp.getImg();
-			File f = new File(SystemContext.getRealpath()+"/img/"+oimg);
+			File f = new File(SystemContext.PATH+"/img/"+oimg);
 			f.delete();
 			tp.setImg(p.getImg());
 		}

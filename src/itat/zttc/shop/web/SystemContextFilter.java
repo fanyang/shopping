@@ -23,7 +23,6 @@ public class SystemContextFilter implements Filter {
 			FilterChain chain) throws IOException, ServletException {
 		try {
 			int pageOffset = 0;
-			int pageSize = 15;
 			String sort = req.getParameter("sort");
 			String order = req.getParameter("order");
 			try {

@@ -5,7 +5,7 @@ import itat.zttc.shop.model.Pager;
 import itat.zttc.shop.model.Product;
 import itat.zttc.shop.model.ShopDi;
 import itat.zttc.shop.model.ShopException;
-import itat.zttc.shop.model.SystemContext;
+import itat.zttc.shop.web.SystemContext;
 
 import java.io.File;
 import java.util.HashMap;

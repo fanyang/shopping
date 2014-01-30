@@ -1,7 +1,5 @@
 package itat.zttc.shop.web;
 
-import itat.zttc.shop.model.SystemContext;
-
 import java.io.IOException;
 
 import javax.servlet.Filter;

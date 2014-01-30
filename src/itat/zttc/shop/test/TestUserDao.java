@@ -6,9 +6,9 @@ import itat.zttc.shop.dao.IUserDao;
 import itat.zttc.shop.model.Address;
 import itat.zttc.shop.model.Pager;
 import itat.zttc.shop.model.ShopDi;
-import itat.zttc.shop.model.SystemContext;
 import itat.zttc.shop.model.User;
 import itat.zttc.shop.util.DaoUtil;
+import itat.zttc.shop.web.SystemContext;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package itat.zttc.shop.model;
+package itat.zttc.shop.web;
 
 public class SystemContext {
 	private static int pageSize;

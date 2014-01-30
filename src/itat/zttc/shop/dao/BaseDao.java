@@ -1,9 +1,9 @@
 package itat.zttc.shop.dao;
 
 import itat.zttc.shop.model.Pager;
-import itat.zttc.shop.model.SystemContext;
 import itat.zttc.shop.util.DaoUtil;
 import itat.zttc.shop.util.MyBatisUtil;
+import itat.zttc.shop.web.SystemContext;
 
 import java.util.HashMap;
 import java.util.List;

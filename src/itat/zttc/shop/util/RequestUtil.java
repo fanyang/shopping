@@ -1,8 +1,8 @@
 package itat.zttc.shop.util;
 
-import itat.zttc.shop.model.SystemContext;
 import itat.zttc.shop.model.ValidateForm;
 import itat.zttc.shop.model.ValidateType;
+import itat.zttc.shop.web.SystemContext;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

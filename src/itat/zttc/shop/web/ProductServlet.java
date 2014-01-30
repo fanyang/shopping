@@ -5,7 +5,6 @@ import itat.zttc.shop.dao.IProductDao;
 import itat.zttc.shop.model.Product;
 import itat.zttc.shop.model.ShopDi;
 import itat.zttc.shop.model.ShopException;
-import itat.zttc.shop.model.SystemContext;
 import itat.zttc.shop.util.RequestUtil;
 
 import java.io.File;
